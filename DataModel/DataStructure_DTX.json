@@ -1,0 +1,205 @@
+{
+  "ORGANISATION_1": {
+    "INSTITUTE_1": {
+      "DEPARTMENT_1": {
+        "INFORMATION": {},
+		"SUBJECTS":{
+          "YEAR1_SEM1":{
+            "SUBJECT1": {
+              "NAME":"MATEHMATICS I",
+              "THEORY":"YES",
+              "PRACTICAL":"NO"
+            } , 
+            "SUBJECT2": {
+              "NAME":"APPLIED SCIENCE I",
+              "THEORY":"YES",
+              "PRACTICAL":"NO"
+            } ,             
+            "SUBJECT3": {
+              "NAME":"ENGINEERING MECHANICS I",
+              "THEORY":"YES",
+              "PRACTICAL":"NO"
+            } ,             
+            "SUBJECT4": {
+              "NAME":"ELECTRICAL MACHINE I",
+              "THEORY":"YES",
+              "PRACTICAL":"NO"
+            } , 
+            "SUBJECT5": {
+              "NAME":"ENGINEERING DRAWING I",
+              "THEORY":"YES",
+              "PRACTICAL":"NO"
+            }
+          },
+        
+          "YEAR1_SEM2":{
+            "SUBJECT1": {
+              "NAME":"MATEHMATICS II",
+              "THEORY":"YES",
+              "PRACTICAL":"NO"
+            } , 
+            "SUBJECT2": {
+              "NAME":"APPLIED SCIENCE II",
+              "THEORY":"YES",
+              "PRACTICAL":"NO"
+            } ,             
+            "SUBJECT3": {
+              "NAME":"ENGINEERING MECHANICS II",
+              "THEORY":"YES",
+              "PRACTICAL":"NO"
+            } ,             
+            "SUBJECT4": {
+              "NAME":"ELECTRICAL MACHINE II",
+              "THEORY":"YES",
+              "PRACTICAL":"NO"
+            } , 
+            "SUBJECT5": {
+              "NAME":"ENGINEERING DRAWING II",
+              "THEORY":"YES",
+              "PRACTICAL":"NO"
+            }            
+          },  
+ 
+          "YEAR2_SEM1":{
+            
+          },  
+          "YEAR2_SEM2":{
+            
+          },  
+          "YEAR3_SEM1":{
+            
+          },  
+          "YEAR3_SEM2":{
+            
+          },  
+          "YEAR4_SEM1":{
+            
+          },  
+          "YEAR4_SEM2":{
+            
+          }
+        },
+        "TECHINICAL_STAFF": {
+			"EMPLOYEE_1":{
+            "INFO":{
+              "FIRST_NAME"    : "FirstName1",
+              "LAST_NAME"     : "LastName1",
+              "DOM"           : "DD/MM/YYYY",
+              "GENDER"        : "M",
+              "CONTACT_NUMBER": "+91988456982"
+            },
+            "EMPLOYMENT_DETAILS": {
+              "DOJ"         : "1-1-2018",
+              "TYPE"  : "TEACHING STAFF"
+            }
+          },
+          "EMPLOYEE_2":{
+            "INFO":{
+              "FIRST_NAME"    : "FirstName2",
+              "LAST_NAME"     : "LastName2",
+              "DOM"           : "DD/MM/YYYY",
+              "GENDER"        : "M",
+              "CONTACT_NUMBER": "+91988456982"
+            },
+            "EMPLOYMENT_DETAILS": {
+              "DOJ"         : "1-1-2018",
+              "TYPE"  : "NON-TEACHING STAFF"
+            }
+          },          
+          "EMPLOYEE_3":{
+            "INFO":{
+              "FIRST_NAME"    : "FirstName3",
+              "LAST_NAME"     : "LastName3",
+              "DOM"           : "DD/MM/YYYY",
+              "GENDER"        : "M",
+              "CONTACT_NUMBER": "+91988456982"
+            },
+            "EMPLOYMENT_DETAILS": {
+              "DOJ"         : "1-1-2018",
+              "TYPE"  : "TEACHING STAFF"
+            }
+          }
+		},
+        "NON_TECHNICAL_STAFF": {},
+        "STUDENTS": {
+          "USN_1": {
+            "INFO": {
+              "FIRST_NAME": "FirstName",
+              "LAST_NAME": "LastName",
+              "DOM": "DD/MM/YYYY",
+              "GENDER": "M",
+              "CONTACT_NUMBER": "+91988456982",
+              "EMAIL": "",
+              "ADDRESS": {
+                "STREET_LINE_1": "",
+                "STREET_LINE_2": "",
+                "LANDMARK": "",
+                "CITY_TOWN_TALUK": "",
+                "DISTRICT": "",
+                "STATE": "",
+                "PINCODE": "",
+                "COUNTRY": ""
+              }
+            },
+            "COURSE_DETAILS": {
+              "BATCH": "2018",
+              "CURRENT_YEAR": "1",
+              "CURRENT_SEM": "1"
+            },
+            "GAURDIAN": {
+              "FIRST_NAME": "FirstName",
+              "LAST_NAME": "LastName",
+              "EMAIL": "",
+              "CONTACT_NUMBER": "+91988456982",
+              "ADDRESS": {
+                "STREET_LINE_1": "",
+                "STREET_LINE_2": "",
+                "LANDMARK": "",
+                "CITY_TOWN_TALUK": "",
+                "DISTRICT": "",
+                "STATE": "",
+                "PINCODE": "",
+                "COUNTRY": ""
+              }
+            },
+            "SEM_1": {
+              "SUBJECTS": {
+                "SUB_1": {
+                  "TYPE": "T/P",
+                  "SUB_TYPE": "R/O/S",
+                  "INTERNAL": [
+                    {
+                      "DATE_TAKEN": "",
+                      "TOTAL_MARKS": ""
+                    },
+                    {
+                      "DATE_TAKEN": "",
+                      "TOTAL_MARKS": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "STUDENT_ATTENDANCE": {},
+        "TECHNICAL_STAFF_ATTENDANCE": {},
+        "ARCHIVE": {
+          "YEAR_1": {
+            "SEMESTER_1": {
+              "STUDENTS": {},
+              "TECHNICAL_STAFF": {},
+              "SUBJECTS": {},
+              "NON_TECHNICAL_STAFF": {}
+            },
+            "SEMESTER_2": {}
+          },
+          "YEAR_2": {}
+        }
+      }
+    },
+    "INSTITUTE_2": {
+      "DEPARTMENT_1": {}
+    }
+  }
+}
