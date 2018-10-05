@@ -40,6 +40,7 @@ class App extends Component {
     //this.props.onLoad(token ? agent.Auth.current() : null, token);
   }
   render() {
+    //console.log(this.props.pathname);
     return (
       <div>
         <Switch>
@@ -58,7 +59,7 @@ const mapStateToProps = state => {
     appName: state.common.appName,
     currentUser: state.common.currentUser,
     redirectTo: state.common.redirectTo,
-    appPath: state.router.location.pathname
+    appPath: state.router.location
   }
 };
 

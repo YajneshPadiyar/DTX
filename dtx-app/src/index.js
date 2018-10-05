@@ -9,7 +9,7 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import {store, history} from './store';
 //const history = createHistory();
-
+//console.log(store.getState());
 ReactDOM.render(
   (<Provider store={store}>
     <Router history={history}>

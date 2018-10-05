@@ -1,13 +1,14 @@
 import { APP_GOTO_PAGE } from '../constants/appConstants';
 
 const defaultState = {
-  appName: 'Sales App',
+  appName: 'DTX App',
   token: null,
   viewChangeCounter: 0
 };
 
 
 export default(state=defaultState, action) => {
+  //console.log(state);
   switch (action.type){
     case APP_GOTO_PAGE:
       return {
