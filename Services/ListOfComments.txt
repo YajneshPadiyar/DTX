@@ -1,2 +1,0 @@
-sls deploy --stage dev
-sls remove
