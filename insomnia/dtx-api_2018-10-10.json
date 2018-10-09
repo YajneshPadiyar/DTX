@@ -1,0 +1,177 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-10-09T23:41:37.860Z",
+	"__export_source": "insomnia.desktop.app:v6.0.2",
+	"resources": [
+		{
+			"_id": "wrk_807e397606724a53af0744ac960018b4",
+			"created": 1538789961073,
+			"description": "",
+			"modified": 1538789961073,
+			"name": "dtx-api",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_0fe4720db59d45ffb8a02e5ae12f266c",
+			"color": null,
+			"created": 1538789961098,
+			"data": {},
+			"isPrivate": false,
+			"metaSortKey": 1538789961098,
+			"modified": 1538789961098,
+			"name": "New Environment",
+			"parentId": "wrk_807e397606724a53af0744ac960018b4",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_6c13ddc3c0e84efb9ea221838708f7d3",
+			"cookies": [],
+			"created": 1538789961102,
+			"modified": 1538789961102,
+			"name": "Default Jar",
+			"parentId": "wrk_807e397606724a53af0744ac960018b4",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_06193bf38a654d048e9c35bf4de916ee",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"title\": \"Test 2\",\n\t\"description\": \"Test Note 2 dtx-api\"\n}"
+			},
+			"created": 1538789979166,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_dabf922dcfac48f0adbeb9282729f185",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1538789979166,
+			"method": "POST",
+			"modified": 1539128401810,
+			"name": "createNote",
+			"parameters": [],
+			"parentId": "wrk_807e397606724a53af0744ac960018b4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:3000/notes",
+			"_type": "request"
+		},
+		{
+			"_id": "req_fd562a45f65e4b0ca08e5cc8c7ae1133",
+			"authentication": {},
+			"body": {},
+			"created": 1538790390985,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1538790390985,
+			"method": "GET",
+			"modified": 1538790420926,
+			"name": "getOne",
+			"parameters": [],
+			"parentId": "wrk_807e397606724a53af0744ac960018b4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:3000/notes/5bb812dc24708512bc509177",
+			"_type": "request"
+		},
+		{
+			"_id": "req_9afad1c6bff84ee289e75ca33d1bbfe6",
+			"authentication": {},
+			"body": {},
+			"created": 1538790451478,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_4751118db4a94ef2a7aeb1e38e1c9f94",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1538790451478,
+			"method": "GET",
+			"modified": 1538790514564,
+			"name": "getAll",
+			"parameters": [],
+			"parentId": "wrk_807e397606724a53af0744ac960018b4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:3000/notes",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6ef1b8997c67465c88821629f36fb2a5",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"title\": \"Updated title\"\n}"
+			},
+			"created": 1538790571267,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7a61019f25954f52ab60fe6034f262ee",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1538790571267,
+			"method": "PUT",
+			"modified": 1538790655675,
+			"name": "updateNote",
+			"parameters": [],
+			"parentId": "wrk_807e397606724a53af0744ac960018b4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:3000/notes/5bb812dc24708512bc509177",
+			"_type": "request"
+		},
+		{
+			"_id": "req_8fcbfb753aa64ea8a7f27f22f094ade5",
+			"authentication": {},
+			"body": {},
+			"created": 1538790579419,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1538790579419,
+			"method": "DELETE",
+			"modified": 1538790703052,
+			"name": "deleteNote",
+			"parameters": [],
+			"parentId": "wrk_807e397606724a53af0744ac960018b4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:3000/notes/5bb812c824708512bc509176",
+			"_type": "request"
+		}
+	]
+}
