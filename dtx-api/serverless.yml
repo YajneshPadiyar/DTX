@@ -44,7 +44,14 @@ functions: # add 4 functions for CRUD
     handler: handler.getDepartmentByName
     events:
       - http:
-          path: department/{name} # path will be domain.name.com/dev/notes/1
+          path: department/information/{name} # path will be domain.name.com/dev/notes/1
+          method: get
+          cors: true
+  getDepartmentById:
+    handler: handler.getDepartmentById
+    events:
+      - http:
+          path: department/{id} # path will be domain.name.com/dev/notes/1
           method: get
           cors: true
   getAllDepartments:

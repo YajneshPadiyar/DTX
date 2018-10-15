@@ -124,7 +124,25 @@ module.exports.getDepartmentByName = (event, context, callback) => {
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the org.'
+          body: 'Could not fetch the department.'
+        }));
+    });
+};
+
+module.exports.getDepartmentById = (event, context, callback) => {
+  context.callbackWaitsForEmptyEventLoop = false;
+
+  connectToDatabase()
+    .then(() => {
+      Department.findById(event.pathParameters.id)
+        .then(department => callback(null, {
+          statusCode: 200,
+          body: JSON.stringify(department)
+        }))
+        .catch(err => callback(null, {
+          statusCode: err.statusCode || 500,
+          headers: { 'Content-Type': 'text/plain' },
+          body: 'Could not fetch the department.'
         }));
     });
 };
