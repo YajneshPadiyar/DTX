@@ -1,166 +1,112 @@
 const connectToDatabase = require('./db');
 const Note = require('./models/Note');
-const Department = require('./models/Department');
+const Organisation = require('./models/Organisation');
 require('dotenv').config({ path: './variables.env' });
 
-module.exports.create = (event, context, callback) => {
+module.exports.updateOrganisationById = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
     .then(() => {
-      Note.create(JSON.parse(event.body))
-        .then(note => callback(null, {
+      Organisation.findByIdAndUpdate(event.pathParameters.id, JSON.parse(event.body), { new: true })
+        .then(organisation => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(note)
+          body: JSON.stringify(organisation)
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not create the note.'
+          body: 'Could not fetch the Organisations.'
         }));
     });
 };
 
-module.exports.getOne = (event, context, callback) => {
+module.exports.deleteOrganizationById = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
     .then(() => {
-      Note.findById(event.pathParameters.id)
-        .then(note => callback(null, {
+      Organisation.findByIdAndRemove(event.pathParameters.id)
+        .then(organisation => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(note)
+          body: JSON.stringify({ message: 'Removed organisation with id: ' + organisation._id, organisation: organisation })
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the note.'
+          body: 'Could not fetch the organisation.'
         }));
     });
 };
 
-module.exports.getAll = (event, context, callback) => {
+module.exports.createOrganisation = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
     .then(() => {
-      Note.find()
-        .then(notes => callback(null, {
+      Organisation.create(JSON.parse(event.body))
+        .then(organisation => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(notes)
+          body: JSON.stringify(organisation)
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the notes.'
-        }))
-    });
-};
-
-module.exports.update = (event, context, callback) => {
-  context.callbackWaitsForEmptyEventLoop = false;
-
-  connectToDatabase()
-    .then(() => {
-      Note.findByIdAndUpdate(event.pathParameters.id, JSON.parse(event.body), { new: true })
-        .then(note => callback(null, {
-          statusCode: 200,
-          body: JSON.stringify(note)
-        }))
-        .catch(err => callback(null, {
-          statusCode: err.statusCode || 500,
-          headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the notes.'
+          body: 'Could not create the organisation.' + err
         }));
     });
 };
 
-module.exports.delete = (event, context, callback) => {
+module.exports.getOrganisationByName = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
     .then(() => {
-      Note.findByIdAndRemove(event.pathParameters.id)
-        .then(note => callback(null, {
+      Organisation.find({'name':event.pathParameters.name})
+        .then(organisation => callback(null, {
           statusCode: 200,
-          body: JSON.stringify({ message: 'Removed note with id: ' + note._id, note: note })
+          body: JSON.stringify(organisation)
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the notes.'
+          body: 'Could not fetch the organisation.'
         }));
     });
 };
 
-module.exports.createDepartment = (event, context, callback) => {
+module.exports.getOrganisationById = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
     .then(() => {
-      Department.create(JSON.parse(event.body))
-        .then(department => callback(null, {
+      Organisation.findById(event.pathParameters.id)
+        .then(organisation => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(department)
+          body: JSON.stringify(organisation)
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not create the Department.' + err
+          body: 'Could not fetch the organisation.'
         }));
     });
 };
 
-module.exports.getDepartmentByName = (event, context, callback) => {
+module.exports.getAllOrganisations = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
     .then(() => {
-      Department.find({'information.name':event.pathParameters.name})
-        .then(department => callback(null, {
+      Organisation.find()
+        .then(organisations => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(department)
+          body: JSON.stringify(organisations)
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the department.'
-        }));
-    });
-};
-
-module.exports.getDepartmentById = (event, context, callback) => {
-  context.callbackWaitsForEmptyEventLoop = false;
-
-  connectToDatabase()
-    .then(() => {
-      Department.findById(event.pathParameters.id)
-        .then(department => callback(null, {
-          statusCode: 200,
-          body: JSON.stringify(department)
-        }))
-        .catch(err => callback(null, {
-          statusCode: err.statusCode || 500,
-          headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the department.'
-        }));
-    });
-};
-
-module.exports.getAllDepartments = (event, context, callback) => {
-  context.callbackWaitsForEmptyEventLoop = false;
-
-  connectToDatabase()
-    .then(() => {
-      Department.find()
-        .then(departments => callback(null, {
-          statusCode: 200,
-          body: JSON.stringify(departments)
-        }))
-        .catch(err => callback(null, {
-          statusCode: err.statusCode || 500,
-          headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the departments.'
+          body: 'Could not fetch the organisations.'
         }))
     });
 };

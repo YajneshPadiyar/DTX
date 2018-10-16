@@ -26,67 +26,46 @@ provider:
   region: us-east-1
 
 functions: # add 4 functions for CRUD
-  create:
-    handler: handler.create # point to exported create function in handler.js
+  createOrganisation:
+    handler: handler.createOrganisation # point to exported create function in handler.js
     events:
       - http:
-          path: notes # path will be domain.name.com/dev/notes
+          path: organisation # path will be domain.name.com/dev/notes
           method: post
           cors: true
-  createDepartment:
-    handler: handler.createDepartment # point to exported create function in handler.js
+  getOrganisationByName:
+    handler: handler.getOrganisationByName
     events:
       - http:
-          path: department # path will be domain.name.com/dev/notes
-          method: post
-          cors: true
-  getDepartmentByName:
-    handler: handler.getDepartmentByName
-    events:
-      - http:
-          path: department/information/{name} # path will be domain.name.com/dev/notes/1
+          path: organisation/{name} # path will be domain.name.com/dev/notes/1
           method: get
           cors: true
-  getDepartmentById:
-    handler: handler.getDepartmentById
+  getOrganisationById:
+    handler: handler.getOrganisationById
     events:
       - http:
-          path: department/{id} # path will be domain.name.com/dev/notes/1
+          path: organisation/id/{id} # path will be domain.name.com/dev/notes/1
           method: get
           cors: true
-  getAllDepartments:
-    handler: handler.getAllDepartments # path will be domain.name.com/dev/notes
+  getAllOrganisations:
+    handler: handler.getAllOrganisations # path will be domain.name.com/dev/notes
     events:
      - http:
-         path: departments
+         path: organisations
          method: get
          cors: true
-  getOne:
-    handler: handler.getOne
-    events:
-      - http:
-          path: notes/{id} # path will be domain.name.com/dev/notes/1
-          method: get
-          cors: true
-  getAll:
-    handler: handler.getAll # path will be domain.name.com/dev/notes
+  updateOrganisationById:
+    handler: handler.updateOrganisationById # path will be domain.name.com/dev/notes/1
     events:
      - http:
-         path: notes
-         method: get
-         cors: true
-  update:
-    handler: handler.update # path will be domain.name.com/dev/notes/1
-    events:
-     - http:
-         path: notes/{id}
+         path: organisation/id/{id}
          method: put
          cors: true
-  delete:
-    handler: handler.delete
+  deleteOrganizationById:
+    handler: handler.deleteOrganizationById
     events:
      - http:
-         path: notes/{id} # path will be domain.name.com/dev/notes/1
+         path: organisation/{id} # path will be domain.name.com/dev/notes/1
          method: delete
          cors: true
 
