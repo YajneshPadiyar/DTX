@@ -33,6 +33,34 @@ functions: # add 4 functions for CRUD
           path: notes # path will be domain.name.com/dev/notes
           method: post
           cors: true
+  createDepartment:
+    handler: handler.createDepartment # point to exported create function in handler.js
+    events:
+      - http:
+          path: department # path will be domain.name.com/dev/notes
+          method: post
+          cors: true
+  getDepartmentByName:
+    handler: handler.getDepartmentByName
+    events:
+      - http:
+          path: department/information/{name} # path will be domain.name.com/dev/notes/1
+          method: get
+          cors: true
+  getDepartmentById:
+    handler: handler.getDepartmentById
+    events:
+      - http:
+          path: department/{id} # path will be domain.name.com/dev/notes/1
+          method: get
+          cors: true
+  getAllDepartments:
+    handler: handler.getAllDepartments # path will be domain.name.com/dev/notes
+    events:
+     - http:
+         path: departments
+         method: get
+         cors: true
   getOne:
     handler: handler.getOne
     events:
