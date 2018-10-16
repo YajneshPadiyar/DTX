@@ -94,7 +94,7 @@ const organisation = new mongoose.Schema(
   {
     name: String,
     institutes:[institute],
-    employess:[user],
+    employees:[user],
     students:[user]
   }
 );
