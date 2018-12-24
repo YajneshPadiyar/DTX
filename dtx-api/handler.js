@@ -1,112 +1,138 @@
 const connectToDatabase = require('./db');
-const Note = require('./models/Note');
-const Organisation = require('./models/Organisation');
+const Contact = require('./models/Contact');
 require('dotenv').config({ path: './variables.env' });
 
-module.exports.updateOrganisationById = (event, context, callback) => {
+module.exports.updateContactById = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
     .then(() => {
-      Organisation.findByIdAndUpdate(event.pathParameters.id, JSON.parse(event.body), { new: true })
-        .then(organisation => callback(null, {
+      Contact.findByIdAndUpdate(event.pathParameters.id, JSON.parse(event.body), { new: true })
+        .then(contact => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(organisation)
+          body: JSON.stringify(contact)
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the Organisations.'
+          body: 'Could not fetch the contact.'
         }));
     });
 };
 
-module.exports.deleteOrganizationById = (event, context, callback) => {
+module.exports.deleteContactById = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
     .then(() => {
-      Organisation.findByIdAndRemove(event.pathParameters.id)
-        .then(organisation => callback(null, {
+      Contact.findByIdAndRemove(event.pathParameters.id)
+        .then(contact => callback(null, {
           statusCode: 200,
-          body: JSON.stringify({ message: 'Removed organisation with id: ' + organisation._id, organisation: organisation })
+          body: JSON.stringify({ message: 'Removed contact with id: ' + contact._id, contact: contact })
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the organisation.'
+          body: 'Could not fetch the contact.'
         }));
     });
 };
 
-module.exports.createOrganisation = (event, context, callback) => {
+module.exports.createContact = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
     .then(() => {
-      Organisation.create(JSON.parse(event.body))
-        .then(organisation => callback(null, {
+      Contact.create(JSON.parse(event.body))
+        .then(contact => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(organisation)
+          body: JSON.stringify(contact)
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not create the organisation.' + err
+          body: 'Could not create the contact.' + err
         }));
     });
 };
 
-module.exports.getOrganisationByName = (event, context, callback) => {
+module.exports.createContacts = (event, context, callback) => {
+    context.callbackWaitsForEmptyEventLoop = false;
+
+    connectToDatabase()
+        .then(() => {
+            let inputData = JSON.parse(event.body);
+            for(i = 0 ; i < inputData.length ; i++){
+                Contact.create(inputData[i])
+                    .then(contact => callback(null, {
+                        statusCode: 200,
+                        body: JSON.stringify(contact)
+                    }))
+                    .catch(err => callback(null, {
+                        statusCode: err.statusCode || 500,
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: 'Could not create the contact.' + err
+                    }));
+            }
+
+        });
+};
+
+module.exports.getContactByName = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
     .then(() => {
-      Organisation.find({'name':event.pathParameters.name})
+      Contact.find({'name':event.pathParameters.name})
         .then(organisation => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(organisation)
+          body: JSON.stringify(contact)
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the organisation.'
+          body: 'Could not fetch the contact.'
         }));
     });
 };
 
-module.exports.getOrganisationById = (event, context, callback) => {
+module.exports.getContactById = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase()
     .then(() => {
-      Organisation.findById(event.pathParameters.id)
-        .then(organisation => callback(null, {
+      Contact.findById(event.pathParameters.id)
+        .then(contact => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(organisation)
+          body: JSON.stringify(contact)
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the organisation.'
+          body: 'Could not fetch the contact.'
         }));
     });
 };
 
-module.exports.getAllOrganisations = (event, context, callback) => {
-  context.callbackWaitsForEmptyEventLoop = false;
+module.exports.getContacts = (event, context, callback) => {
+    context.callbackWaitsForEmptyEventLoop = false;
 
-  connectToDatabase()
-    .then(() => {
-      Organisation.find()
-        .then(organisations => callback(null, {
-          statusCode: 200,
-          body: JSON.stringify(organisations)
-        }))
-        .catch(err => callback(null, {
-          statusCode: err.statusCode || 500,
-          headers: { 'Content-Type': 'text/plain' },
-          body: 'Could not fetch the organisations.'
-        }))
-    });
+    connectToDatabase()
+        .then(() => {
+            Contact.find()
+                .then(function(contacts){
+                    let contactsString = JSON.stringify(contacts);
+                    let updatedContactsString = contactsString.replace(/_id/g,"id");
+                    callback(null, {
+                        statusCode: 200,
+                        body: updatedContactsString
+                    })
+
+                } )
+                .catch(err => callback(null, {
+                    statusCode: err.statusCode || 500,
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: 'Could not fetch the contacts.'
+                }))
+        });
 };

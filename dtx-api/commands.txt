@@ -1,1 +1,5 @@
+Command to start serverless on default port 3000:
 sls offline start --skipCacheInvalidation
+
+Command to start serverless on required port:
+sls offline start --port 8080 --skipCacheInvalidation

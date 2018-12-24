@@ -26,46 +26,53 @@ provider:
   region: us-east-1
 
 functions: # add 4 functions for CRUD
-  createOrganisation:
-    handler: handler.createOrganisation # point to exported create function in handler.js
+  createContact:
+    handler: handler.createContact # point to exported create function in handler.js
     events:
       - http:
-          path: organisation # path will be domain.name.com/dev/notes
+          path: contact # path will be domain.name.com/dev/notes
           method: post
           cors: true
-  getOrganisationByName:
-    handler: handler.getOrganisationByName
+  createContact:
+    handler: handler.createContact # point to exported create function in handler.js
     events:
       - http:
-          path: organisation/{name} # path will be domain.name.com/dev/notes/1
-          method: get
+          path: contact # path will be domain.name.com/dev/contact
+          method: post
           cors: true
-  getOrganisationById:
-    handler: handler.getOrganisationById
+  getContactByName:
+    handler: handler.getContactByName
     events:
       - http:
-          path: organisation/id/{id} # path will be domain.name.com/dev/notes/1
+          path: contact/{name} # path will be domain.name.com/dev/notes/1
           method: get
           cors: true
-  getAllOrganisations:
-    handler: handler.getAllOrganisations # path will be domain.name.com/dev/notes
+  getContactById:
+    handler: handler.getContactById
+    events:
+      - http:
+          path: contact/id/{id} # path will be domain.name.com/dev/notes/1
+          method: get
+          cors: true
+  getContacts:
+    handler: handler.getContacts # path will be domain.name.com/dev/notes
+    events:
+      - http:
+          path: contacts
+          method: get
+          cors: true
+  updateContactById:
+    handler: handler.updateContactById # path will be domain.name.com/dev/notes/1
     events:
      - http:
-         path: organisations
-         method: get
-         cors: true
-  updateOrganisationById:
-    handler: handler.updateOrganisationById # path will be domain.name.com/dev/notes/1
-    events:
-     - http:
-         path: organisation/id/{id}
+         path: contact/id/{id}
          method: put
          cors: true
-  deleteOrganizationById:
-    handler: handler.deleteOrganizationById
+  deleteContactById:
+    handler: handler.deleteContactById
     events:
      - http:
-         path: organisation/{id} # path will be domain.name.com/dev/notes/1
+         path: contact/{id} # path will be domain.name.com/dev/notes/1
          method: delete
          cors: true
 
